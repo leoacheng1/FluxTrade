@@ -13,7 +13,7 @@ public class PriceConsumer {
 
     // 1. groupId 換一個全新的，保證從頭讀起
     // 2. 暫時不要寫複雜邏輯，只印出一行字
-    @KafkaListener(topics = "coin-price", groupId = "mega-debug-group-999") // 改成這個
+    @KafkaListener(topics = "coin-price", groupId = "mega-debug-group-444") // 改成這個
     public void listen(String message) {
         System.out.println("🎧 [終於抓到了] 收到來自 Kafka 的訊息: " + message);
     }

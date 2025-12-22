@@ -1,13 +1,13 @@
-package com.fluxtrade.engine;
+package com.fluxtrade.engine.service;
 
 import com.fluxtrade.engine.model.PriceRecord;
 import com.fluxtrade.engine.repository.PriceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.kafka.core.KafkaTemplate; // 引入 Kafka
-import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -27,7 +27,10 @@ public class PriceService {
     private final RestTemplate restTemplate = new RestTemplate();
     private final String BINANCE_API = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT";
 
-    @Scheduled(fixedRate = 5000)
+    /**
+     * 撈取比特幣價格function
+     */
+//    @Scheduled(fixedRate = 5000)
     public void fetchPrice() {
         try {
             Map<String, String> response = restTemplate.getForObject(BINANCE_API, Map.class);
